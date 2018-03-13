@@ -9,6 +9,7 @@ import de.smava.recrt.persistence.repository.AppUserRepository;
 import de.smava.recrt.persistence.repository.BankAccountRepository;
 import de.smava.recrt.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,10 @@ public class BankAccountServiceImpl implements BankAccountService {
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
+
+    @Autowired
+    @Qualifier("bankAccountJmsProducer")
+    private BankAccountService bankAccountService;
 
     @Override
     @Transactional
@@ -45,6 +50,21 @@ public class BankAccountServiceImpl implements BankAccountService {
             if (userEntity != null) {
                 BankAccountEntity target = new BankAccountEntity(account.getIban(), account.getBic(), userEntity);
                 return bankAccountRepository.save(target);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public BankAccount createAsync(BankAccount account) throws RecrtServiceException {
+        AppUser user = account.getAppUser();
+        if (user != null) {
+            AppUserEntity userEntity = appUserRepository.findOne(account.getAppUser().getUsername());
+
+            if (userEntity != null) {
+                bankAccountService.createAsync(account);
+                return account;
             }
         }
         return null;

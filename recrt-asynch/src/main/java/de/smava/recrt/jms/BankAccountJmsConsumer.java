@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.List;
 
 @Service("bankAccountJmsConsumer")
@@ -42,5 +43,9 @@ public class BankAccountJmsConsumer implements BankAccountService {
 
     public synchronized void setLastReceived(BankAccount lastReceived) {
         this.lastReceived = lastReceived;
+    }
+
+    public BankAccount createAsync(BankAccount account) throws RecrtServiceException {
+      throw new RecrtServiceException(new RecrtError(500,"operation not supported"));
     }
 }

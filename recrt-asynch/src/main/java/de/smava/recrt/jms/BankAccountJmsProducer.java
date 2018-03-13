@@ -36,4 +36,8 @@ public class BankAccountJmsProducer implements BankAccountService {
         template.convertAndSend(destination, account);
         return null;
     }
+    @Override
+    public BankAccount createAsync(BankAccount account) throws RecrtServiceException {
+        return create(account);
+    }
 }

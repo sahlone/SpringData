@@ -1,11 +1,14 @@
 package de.smava.recrt.rest;
 
+import de.smava.recrt.exception.RecrtError;
 import de.smava.recrt.exception.RecrtServiceException;
 import de.smava.recrt.model.BankAccount;
 import de.smava.recrt.rest.model.BankAccountResource;
 import de.smava.recrt.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,10 +50,10 @@ public class BankAccountApi {
     @Secured({"ROLE_ADMIN"})
     @RequestMapping(method = RequestMethod.POST)
     public BankAccountResource create(@RequestBody BankAccountResource account) throws RecrtServiceException {
-        BankAccount saved = bankAccountService.create(account);
+        BankAccount saved = bankAccountService.createAsync(account);
         if (saved != null) {
             return new BankAccountResource(saved);
         }
-        return null;
+        throw new RecrtServiceException(new RecrtError(404,"user not found"));
     }
 }
