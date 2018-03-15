@@ -24,6 +24,14 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
+    public void setAppUserRepository(AppUserRepository appUserRepository) {
+        this.appUserRepository = appUserRepository;
+    }
+
+    public void setBankAccountRepository(BankAccountRepository bankAccountRepository) {
+        this.bankAccountRepository = bankAccountRepository;
+    }
+
     @Override
     @Transactional
     public List<? extends BankAccount> getByAppUser(String appUserName) throws RecrtServiceException {

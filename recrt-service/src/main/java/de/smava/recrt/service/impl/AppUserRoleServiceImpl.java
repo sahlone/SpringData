@@ -18,6 +18,14 @@ public class AppUserRoleServiceImpl implements AppUserRoleService {
     @Autowired
     private AppUserRoleRepository repository;
 
+    public AppUserRoleRepository getRepository() {
+        return repository;
+    }
+
+    public void setRepository(AppUserRoleRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     @Transactional
     public List<? extends AppUserRole> getByAppUser(AppUser appUser) throws RecrtServiceException {

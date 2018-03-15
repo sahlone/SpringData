@@ -16,6 +16,10 @@ public class AppUserServiceImpl implements AppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
+    public void setAppUserRepository(AppUserRepository appUserRepository) {
+        this.appUserRepository = appUserRepository;
+    }
+
     @Override
     @Transactional
     public List<? extends AppUser> getAll() throws RecrtServiceException {
