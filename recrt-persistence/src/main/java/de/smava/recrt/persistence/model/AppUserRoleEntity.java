@@ -21,6 +21,9 @@ public class AppUserRoleEntity implements AppUserRole {
 
     @Override
     public void setRole(UserRole role) {
+        if(this.key == null){
+            key= new AppUserRoleKey();
+        }
         this.key.setRole(role);
     }
 
