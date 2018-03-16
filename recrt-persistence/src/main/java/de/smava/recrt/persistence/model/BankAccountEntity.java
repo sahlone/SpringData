@@ -1,11 +1,13 @@
 package de.smava.recrt.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import de.smava.recrt.model.BankAccount;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "bank_account")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BankAccountEntity implements BankAccount<AppUserEntity> {
 
     @Id
