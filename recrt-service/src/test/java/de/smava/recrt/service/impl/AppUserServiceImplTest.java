@@ -1,10 +1,10 @@
 package de.smava.recrt.service.impl;
 
 import de.smava.recrt.model.AppUser;
+import de.smava.recrt.service.impl.fixtures.TestsBase;
 import org.junit.Test;
-
 import java.util.List;
-
+import static junit.framework.Assert.assertEquals;
 import static org.easymock.EasyMock.replay;
 
 public class AppUserServiceImplTest extends TestsBase {
@@ -14,8 +14,8 @@ public class AppUserServiceImplTest extends TestsBase {
         mockfindAllUsers(userRepository);
         replay(userRepository);
         List<? extends AppUser> all = appUserService.getAll();
-        assert(all.size() == 1);
-        assert (all.get(0).getUsername()== appUser.getUsername());
+        assertEquals(all.size(),1);
+        assertEquals (all.get(0).getUsername(),appUser.getUsername());
     }
 
     @Test
@@ -23,9 +23,9 @@ public class AppUserServiceImplTest extends TestsBase {
         mockFindOneUser(userRepository);
         replay(userRepository);
         AppUser appUser = appUserService.get(this.appUser.getUsername());
-        assert (appUser.getUsername()== this.appUser.getUsername());
-        assert (appUser.getPassword()== this.appUser.getPassword());
-        assert (appUser.getEmail() == this.appUser.getEmail());
+        assertEquals (appUser.getUsername(), this.appUser.getUsername());
+        assertEquals (appUser.getPassword(), this.appUser.getPassword());
+        assertEquals (appUser.getEmail() , this.appUser.getEmail());
 
     }
 }

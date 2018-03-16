@@ -1,9 +1,12 @@
-package de.smava.recrt.service.impl;
+package de.smava.recrt.service.impl.fixtures;
 
 import de.smava.recrt.persistence.repository.AppUserRepository;
 import de.smava.recrt.persistence.repository.AppUserRoleRepository;
 import de.smava.recrt.persistence.repository.BankAccountRepository;
 import de.smava.recrt.service.BankAccountService;
+import de.smava.recrt.service.impl.AppUserRoleServiceImpl;
+import de.smava.recrt.service.impl.AppUserServiceImpl;
+import de.smava.recrt.service.impl.BankAccountServiceImpl;
 import de.smava.recrt.service.impl.fixtures.TestFixtures;
 import org.junit.After;
 import org.junit.Before;
