@@ -1,4 +1,4 @@
-# J1 - Smava recruitment tasks for Java back-end developer
+# Spring Data Application
 
 The project provides a RESTful API to manage the *de.smava.recrt.model.AppUser* and *de.smava.recrt.model.BankAccount*
 entities.
@@ -179,59 +179,3 @@ Date: Tue, 23 May 2017 12:06:08 GMT
 
 {"username":"user1","loggedIn":true}
 ```
-
-## Before starting
-
-Each task suggests an estimated time for completion ( **ETC** ).
-
-First of all, examine the code to understand the project structure. For a proficient Java+Spring developer.
-
-**ETC**: *20-30 minutes*
-
-#### on each task:
-
-1. Branch off the master using the following naming convention.
-
-    **task-[task number]**
-
-    ex: for the first task, the branch should be **task-1**
-
-1. Once you complete the implementation, commit with an appropriate commit message that describes your work and push your changes to the remote repository.
-
-1. Once you have completed the task, please create a pull request with it.
-
-## Now, let's do this
-
-### task 1
-> By using the available implementation and minimum implementation effort, introduce a third layer between the web and persistence layers for the **create bank account API** so that the create account function is load balanced
-via the use of JMS.
-
-
-**ETC**: *15 minutes*
-
-### task 2
-> With minimum effort, introduce caching for the **de.smava.recrt.service.AppUserRoleService.getByAppUser** service.
-
-**ETC**: *15 minutes*
-
-### task 3
-> Provide a new GET API endpoint on *rest/users/[userName]/accounts* in the
-**de.smava.recrt.rest.AppUserApi** which gets the bank accounts that belong to a specific user.
-The method should only be callable by a user who has the **ROLE_ADMIN** role.
-
-**ETC**: *30 minutes*
-
-### task 4
-> Without adding any new libraries to the project, complete the **recrt-persistence** package unit tests.
-
-**ETC**: *30 minutes*
-
-### task 5
-> Without adding any new libraries to the project, complete the **recrt-service** package unit tests.
-
-**ETC**: *30 minutes*
-
-### task 6
-> Please provide any additional thoughts on how you would improve this code or how you would structure the project differently and why under a secondary level header in this markdown file.
-
-**ETC**: *no estimation*
